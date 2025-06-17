@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to my social media links page. Connect with me on various platforms.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>إسلام عبد الله - الملف الشخصي</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: floatIn 1.5s ease-out;
+        }
+
+        @keyframes floatIn {
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid #00ff88;
+            margin-bottom: 1.5rem;
+            object-fit: cover;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 30px rgba(0, 255, 136, 0.3); }
+            50% { box-shadow: 0 0 50px rgba(0, 255, 136, 0.5); }
+            100% { box-shadow: 0 0 30px rgba(0, 255, 136, 0.3); }
+        }
+
+        .profile h1 {
+            font-size: 2.7rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #00ff88, #00ccff, #fff700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 18px #00ff88, 0 0 8px #00ccff;
+            animation: glow 2s ease-in-out infinite, title-anim 2.5s cubic-bezier(.68,-0.55,.27,1.55) 1;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(0, 255, 136, 0.5); }
+            100% { text-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
+        }
+
+        @keyframes title-anim {
+            0% { letter-spacing: 0.2em; opacity: 0; transform: scale(0.8); }
+            60% { letter-spacing: 0.05em; opacity: 1; transform: scale(1.1); }
+            100% { letter-spacing: 0.01em; opacity: 1; transform: scale(1); }
+        }
+
+        .profile p {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards 1s;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .links {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .link-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1.5px solid #00ccff33;
+            border-radius: 15px;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow 0.3s, border 0.3s, background 0.3s;
+            animation: slideIn 0.5s ease-out backwards;
+            cursor: pointer;
+            box-shadow: 0 2px 16px 0 #00ff8822, 0 0 0 0 #00ccff00;
+        }
+
+        .link-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.9);
+            opacity: 0;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .link-card:active::after {
+            opacity: 0.3;
+            transform: translate(-50%, -50%) scale(50);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: #00ff88;
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.2),
+                      inset 0 0 20px rgba(0, 255, 136, 0.1);
+        }
+
+        .link-card:nth-child(1) { animation-delay: 0.2s; }
+        .link-card:nth-child(2) { animation-delay: 0.4s; }
+        .link-card:nth-child(3) { animation-delay: 0.6s; }
+        .link-card:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #00ff8855, #00ccff55);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: #00ff88;
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.2);
+        }
+
+        .link-card:active {
+            transform: scale(0.95);
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.1);
+        }
+
+        .link-card:hover::before {
+            opacity: 1;
+        }
+
+        .link-card img {
+            width: 50px;
+            height: 50px;
+            margin-left: 1.2rem;
+            border-radius: 12px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .link-card:hover img {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .link-card .platform-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .link-card:hover .platform-name {
+            transform: scale(1.05);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 3rem;
+            padding: 1rem;
+            opacity: 0;
+            animation: fadeUp 1s ease-out forwards 1.5s;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            filter: brightness(0.8);
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05) translateY(-10px);
+            border-color: #00ff88;
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3);
+            filter: brightness(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .profile img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile h1 {
+                font-size: 2rem;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+
+            .gallery img {
+                height: 140px;
+            }
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            border-radius: 50%;
+            opacity: 0.4;
+            background: linear-gradient(135deg, #00ff88 0%, #00ccff 100%);
+            animation: rise 12s linear infinite;
+        }
+        @keyframes rise {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.4;
+            }
+            80% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-110vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* تأثيرات إلكترونية إضافية */
+        .circuit-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, #00ff88 0%, #00ccff 100%);
+            opacity: 0.13;
+            border-radius: 2px;
+            box-shadow: 0 0 16px 2px #00ff8855;
+        }
+        .circuit-dot {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: #00ff88;
+            border-radius: 50%;
+            box-shadow: 0 0 16px 4px #00ff8855;
+            opacity: 0.18;
+        }
+        /* تحسين الروابط */
+        .link-card {
+            box-shadow: 0 2px 16px 0 #00ff8822, 0 0 0 0 #00ccff00;
+            border: 1.5px solid #00ccff33;
+            transition: box-shadow 0.3s, border 0.3s, background 0.3s;
+        }
+        .link-card:hover {
+            background: linear-gradient(90deg, #00ff8822 0%, #00ccff22 100%);
+            border: 1.5px solid #00ff88;
+            box-shadow: 0 4px 32px 0 #00ff8855, 0 0 0 0 #00ccff00;
+        }
+        /* تحسين الفوتر */
+        .footer-sign {
+            margin-top: 2.5rem;
+            text-align: center;
+            color: #00ff88;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px #00ff8855;
+            direction: ltr;
+            z-index: 10;
+            position: relative;
+            animation: footer-glow 2s ease-in-out infinite;
+        }
+        @keyframes footer-glow {
+            0% { text-shadow: 0 0 8px #00ff8855; }
+            50% { text-shadow: 0 0 16px #00ff88, 0 0 8px #00ccff; }
+            100% { text-shadow: 0 0 8px #00ff8855; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="animated-bg">
+        <div class="bubble" style="left:10vw;width:40px;height:40px;animation-delay:0s;"></div>
+        <div class="bubble" style="left:30vw;width:60px;height:60px;animation-delay:2s;"></div>
+        <div class="bubble" style="left:50vw;width:30px;height:30px;animation-delay:4s;"></div>
+        <div class="bubble" style="left:70vw;width:50px;height:50px;animation-delay:1s;"></div>
+        <div class="bubble" style="left:90vw;width:80px;height:80px;animation-delay:3s;"></div>
+    </div>
+    <!-- خلفية دوائر وخطوط إلكترونية -->
+    <div class="circuit-bg">
+        <div class="circuit-line" style="top:10vh;left:5vw;width:80vw;height:2px;"></div>
+        <div class="circuit-line" style="top:60vh;left:10vw;width:60vw;height:2px;transform:rotate(2deg);"></div>
+        <div class="circuit-line" style="top:30vh;left:20vw;width:50vw;height:2px;transform:rotate(-3deg);"></div>
+        <div class="circuit-dot" style="top:10vh;left:10vw;"></div>
+        <div class="circuit-dot" style="top:60vh;left:65vw;"></div>
+        <div class="circuit-dot" style="top:30vh;left:40vw;"></div>
+        <div class="circuit-dot" style="top:80vh;left:80vw;"></div>
+    </div>
+    <div class="profile">
+        <img src="image/1.jpg" alt="إسلام عبد الله">
+        <h1>إسلام عبد الله</h1>
+        <p>مبتكر عربي | صانع محتوى | مطور تقني</p>
+    </div>
+
+    <div class="links">
+        <a href="instagram://user?username=abn_frnaas_" class="link-card" onclick="window.location.href='instagram://user?username=abn_frnaas_'; setTimeout(() => window.location.href='https://www.instagram.com/abn_frnaas_', 500);">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram">
+            <span class="platform-name">Instagram</span>
+        </a>
+
+        <a href="tiktok://user?username=el_moptakren_el_arab_" class="link-card" onclick="window.location.href='tiktok://user?username=el_moptakren_el_arab_'; setTimeout(() => window.location.href='https://www.tiktok.com/@el_moptakren_el_arab_', 500);">
+            <img src="https://sf-tb-sg.ibytedtos.com/obj/eden-sg/uhtyvueh7nulogpoguhm/tiktok-icon2.png" alt="TikTok">
+            <span class="platform-name">TikTok - المبتكر العربي</span>
+        </a>
+
+        <a href="vnd.youtube://channel/abn_frnaas" class="link-card" onclick="window.location.href='vnd.youtube://channel/abn_frnaas'; setTimeout(() => window.location.href='https://www.youtube.com/channel/abn_frnaas', 500);">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube">
+            <span class="platform-name">YouTube</span>
+        </a>
+
+        <a href="tiktok://user?username=abn.frnaaas" class="link-card" onclick="window.location.href='tiktok://user?username=abn.frnaaas'; setTimeout(() => window.location.href='https://www.tiktok.com/@abn.frnaaas', 500);">
+            <img src="https://sf-tb-sg.ibytedtos.com/obj/eden-sg/uhtyvueh7nulogpoguhm/tiktok-icon2.png" alt="TikTok">
+            <span class="platform-name">TikTok - إسلام عبد الله</span>
+        </a>
+    </div>
+
+    <div class="gallery">
+        <img src="image/1.jpg" alt="صورة 1">
+        <img src="image/2.jpg" alt="صورة 2">
+        <img src="image/3.jpg" alt="صورة 3">
+        <img src="image/4.jpg" alt="صورة 4">
+        <img src="image/5.jpg" alt="صورة 5">
+        <img src="image/6.jpg" alt="صورة 6">
+        <img src="image/7.jpg" alt="صورة 7">
+        <img src="image/8.jpg" alt="صورة 8">
+        <img src="image/9.jpg" alt="صورة 9">
+        <img src="image/10.jpg" alt="صورة 10">
+    </div>
+    <div class="footer-sign">
+        مصمم ومبرمج: اسماعيل سيد | 01029843800
+    </div>
+</body>
+</html>
